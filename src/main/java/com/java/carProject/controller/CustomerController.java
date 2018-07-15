@@ -4,6 +4,7 @@ import com.java.carProject.entity.Customers;
 import com.java.carProject.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,15 +18,9 @@ public class CustomerController {
 
     @GetMapping("/customers/all/ascending")
     @ResponseBody
-    public String getCustomersByBirthDateAsc(){
+    public String getCustomersByBirthDateAsc(Model model){
        List<Customers> customersListAsc = customerService.getCustomersByBirthDateAsc();
-        StringBuilder builder = new StringBuilder();
-        builder.append("Customers ordered by birth date asc: ");
-        if(customersListAsc !=null){
-            for (Customers customer: customersListAsc){
-                builder.append(customer.getName() + ",");
-            }
-        }
-        return builder.toString();
+       model.addAttribute("customersListAsc",customersListAsc);
+        return "customersAsc";
     }
 }
