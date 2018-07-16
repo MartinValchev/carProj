@@ -13,7 +13,7 @@ public class Customers {
     private Long id;
     private String name;
     private Date birthDate;
-    private boolean isYoundDriver;
+    private boolean isYoungDriver;
 
     public long getId() {
         return id;
@@ -39,12 +39,12 @@ public class Customers {
         this.birthDate = birthDate;
     }
 
-    public boolean isYoundDriver() {
-        return isYoundDriver;
+    public boolean isYoungDriver() {
+        return isYoungDriver;
     }
 
-    public void setYoundDriver(boolean youndDriver) {
-        isYoundDriver = youndDriver;
+    public void setYoungDriver(boolean youngDriver) {
+        isYoungDriver = youngDriver;
     }
 
 
