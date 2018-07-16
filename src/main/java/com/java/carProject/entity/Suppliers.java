@@ -1,6 +1,7 @@
 package com.java.carProject.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="suppliers")
@@ -10,6 +11,10 @@ public class Suppliers {
     private Long id;
     private String name;
     private boolean isImporter;
+    @OneToMany(targetEntity =Parts.class, mappedBy = "suppliers", fetch=FetchType.EAGER)
+    private Set<Parts> parts;
+
+
 
     public Long getId() {
         return id;
@@ -33,6 +38,14 @@ public class Suppliers {
 
     public void setImporter(boolean importer) {
         isImporter = importer;
+    }
+
+    public Set<Parts> getParts() {
+        return parts;
+    }
+
+    public void setParts(Set<Parts> parts) {
+        this.parts = parts;
     }
 
 }
