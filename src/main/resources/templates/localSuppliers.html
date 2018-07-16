@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Suppliers list</title>
+</head>
+<body>
+<h1>Local Suppliers list</h1>
+<table border="1px">
+    <tr>
+        <th>Name</th>
+        <th>Is importer</th>
+    </tr>
+    <tbody>
+    <tr th:each="supplier:${localSuppliersList}">
+        <td th:text="${supplier.name}"></td>
+        <td th:text="${supplier.isImporter}"></td>
+    </tr>
+    <tbody>
+</table>
+</body>
+</html>
