@@ -34,11 +34,6 @@ public class CustomerController {
         model.addAttribute("customersListDesc",customersListDesc);
         return "customersDesc";
     }
-    @GetMapping("/cars/{make}")
-    public String getCarsByMake(@PathVariable String make, Model model){
-       List<Cars> carsByMakeList = carsService.getCarsByMake(make);
-        model.addAttribute("carsByMakeList",carsByMakeList);
-        return "carsByMake";
-    }
+
 
 }
