@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers By Birth Date Desc</title>
+</head>
+<body>
+<h1>Customers By Birth Date Desc</h1>
+<table border="1px">
+    <!--          <th>
+              <td>Name</td>
+              <td>Birth date</td>
+              <td>Is Young Driver</td>
+              </th>-->
+    <tbody>
+    <tr th:each="customer:${customersListDesc}">
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.birthDate}"></td>
+        <td th:text="${customer.isYoungDriver}"></td>
+    </tr>
+    <tbody>
+</table>
+</body>
+</html>
