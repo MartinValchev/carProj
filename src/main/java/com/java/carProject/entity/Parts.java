@@ -1,6 +1,8 @@
 package com.java.carProject.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name ="parts")
@@ -11,6 +13,18 @@ public class Parts {
     private String name;
     private double price;
     private long quantity;
+
+    @ManyToMany(mappedBy = "parts")
+    private List<Cars> cars = new ArrayList<>();
+
+    public List<Cars> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Cars> cars) {
+        this.cars = cars;
+    }
+
     @ManyToOne
     @JoinColumn(name ="supplier_id")
     private Suppliers suppliers;

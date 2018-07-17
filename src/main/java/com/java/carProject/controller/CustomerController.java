@@ -19,9 +19,6 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @Autowired
-    CarsService carsService;
-
     @GetMapping("/customers/all/ascending")
     public String getCustomersByBirthDateAsc(Model model){
        List<Customers> customersListAsc = customerService.getCustomersByBirthDateAsc();

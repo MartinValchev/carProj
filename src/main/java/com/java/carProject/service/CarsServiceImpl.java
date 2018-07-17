@@ -17,4 +17,10 @@ public class CarsServiceImpl implements CarsService {
         List<Cars> carByMakeList = carsRepository.findByMake(make);
         return carByMakeList;
     }
+
+    @Override
+    public Cars getCarById(Long carId) {
+        Cars car  =carsRepository.getCarByid(carId);
+        return car;
+    }
 }

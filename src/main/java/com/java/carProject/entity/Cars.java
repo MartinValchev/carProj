@@ -1,6 +1,8 @@
 package com.java.carProject.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "cars")
@@ -12,6 +14,20 @@ public class Cars {
     private String make;
     private String model;
     private long travelledDistance;
+
+    @ManyToMany
+    @JoinTable(name="parts_cars",
+            joinColumns = {@JoinColumn(name="car_id")},
+            inverseJoinColumns = {@JoinColumn(name="part_id")})
+    private List<Parts> parts = new ArrayList<>();
+
+    public List<Parts> getParts() {
+        return parts;
+    }
+
+    public void setParts(List<Parts> parts) {
+        this.parts = parts;
+    }
 
     public long getId() {
         return id;
