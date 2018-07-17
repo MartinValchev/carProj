@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales</title>
+</head>
+<body>
+    <h1>sales information</h1>
+    <div>
+        Customer name : <span th:text="${customerName}"></span>
+    </div>
+    <div>
+        Bought cars count : <span th:text="${boughtCarsCount}"></span>
+    </div>
+    <div>
+        Total spent money : <span th:text="${moneySpent}"></span>
+    </div>
+</body>
+</html>

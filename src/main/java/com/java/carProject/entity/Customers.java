@@ -5,7 +5,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "customers")
-@NamedQuery(name = "Customers.findByBirthDateAsc", query = "SELECT p FROM Customers p ORDER by p.birthDate asc")
 
 public class Customers {
     @Id
