@@ -12,4 +12,11 @@ public interface SalesRepository extends CrudRepository<Sales,Long>{
 
     @Query("SELECT COUNT(e.cars) from Sales e where e.customers.id=:customerId")
     Integer getBoughtCarsCountByCustomerId(@Param("customerId") Long customerId);
+
+    @Query("SELECT e from Sales e")
+    List<Sales> getAllSales();
+
+    @Query("SELECT e from Sales e where e.id=:salesId")
+    List<Sales> getSalesById(@Param("salesId") Long salesId);
+
 }

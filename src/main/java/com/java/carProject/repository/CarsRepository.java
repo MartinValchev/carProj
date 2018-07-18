@@ -14,4 +14,5 @@ public interface CarsRepository extends CrudRepository<Cars,Long> {
 
     @Query("SELECT e FROM Cars e WHERE e.id =:id")
     Cars getCarByid(@Param("id") Long id);
+
 }
