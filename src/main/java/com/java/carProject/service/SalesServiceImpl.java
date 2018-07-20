@@ -83,13 +83,7 @@ public class SalesServiceImpl implements SalesService {
     }
 
     @Override
-    public List<SalesCustomers> generateSalesCustomersList(Long salesId) {
-        List<Sales> salesList = null;
-        if(salesId == null) {
-            salesList = salesRepository.getAllSales();
-        }else{
-            salesList = salesRepository.getSalesById(salesId);
-        }
+    public List<SalesCustomers> generateSalesCustomersList(List<Sales> salesList) {
         List<SalesCustomers> resultList = new ArrayList<>();
         if(salesList !=null) {
             for (Sales sales : salesList) {
@@ -106,6 +100,26 @@ public class SalesServiceImpl implements SalesService {
             }
         }
         return resultList;
+    }
+
+    @Override
+    public List<Sales> getAllSalesList() {
+        return salesRepository.getAllSales();
+    }
+
+    @Override
+    public List<Sales> getSalesById(Long salesId) {
+        return salesRepository.getSalesById(salesId);
+    }
+
+    @Override
+    public List<Sales> getAllDiscountedSales() {
+        return salesRepository.getDiscountedSales();
+    }
+
+    @Override
+    public List<Sales> getAllFixedDiscountedSales(double percent) {
+        return salesRepository.getDiscountedSalesPercent(percent);
     }
 
 

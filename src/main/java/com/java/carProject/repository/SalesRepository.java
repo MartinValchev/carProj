@@ -19,4 +19,10 @@ public interface SalesRepository extends CrudRepository<Sales,Long>{
     @Query("SELECT e from Sales e where e.id=:salesId")
     List<Sales> getSalesById(@Param("salesId") Long salesId);
 
+    @Query("SELECT e from Sales e where e.discount>0")
+    List<Sales> getDiscountedSales();
+
+    @Query("SELECT e from Sales e where e.discount=:discount")
+    List<Sales> getDiscountedSalesPercent(@Param("discount")double discount);
+
 }

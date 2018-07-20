@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head>
+    <meta charset="UTF-8">
+    <title>All Discounted Sales list</title>
+</head>
+<body>
+<h1>All Discounted Sales list</h1>
+<table border="1px">
+    <tr>
+        <th>Car Make</th>
+        <th>Car Model</th>
+        <th>Car Travelled Distance</th>
+        <th>Customer Id</th>
+        <th>Car Price</th>
+        <th>Car Price with Discount</th>
+        <th>Discount %</th>
+    </tr>
+    <tbody>
+    <tr th:each="salesCustomer:${discountedSalesCustomersList}">
+        <td th:text="${salesCustomer.car.make}"></td>
+        <td th:text="${salesCustomer.car.model}"></td>
+        <td th:text="${salesCustomer.car.travelledDistance}"></td>
+        <td th:text="${salesCustomer.customer.id}"></td>
+        <td th:text="${salesCustomer.priceOfSale}"></td>
+        <td th:text="${salesCustomer.priceOfSaleDiscount}"></td>
+        <td th:text="${salesCustomer.discount}"></td>
+    </tr>
+    <tbody>
+</table>
+</body>
+</html>

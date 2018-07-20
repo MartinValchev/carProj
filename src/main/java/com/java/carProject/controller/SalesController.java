@@ -1,5 +1,6 @@
 package com.java.carProject.controller;
 
+import com.java.carProject.entity.Sales;
 import com.java.carProject.entity.SalesCustomers;
 import com.java.carProject.service.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +28,34 @@ public class SalesController {
     }
     @GetMapping("/Sales/{id}")
     public String getAllSalesById(@PathVariable Long id,Model model){
-        List<SalesCustomers> salesCustomersList = salesService.generateSalesCustomersList(id);
+        List<Sales> salesList = salesService.getSalesById(id);
+        List<SalesCustomers> salesCustomersList = salesService.generateSalesCustomersList(salesList);
         model.addAttribute("salesCustomersList",salesCustomersList);
         return "salesById";
     }
 
     @GetMapping("/Sales")
     public String getSalesList(Model model){
-        List<SalesCustomers> salesCustomersList = salesService.generateSalesCustomersList(null);
+        List<Sales> salesList = salesService.getAllSalesList();
+        List<SalesCustomers> salesCustomersList = salesService.generateSalesCustomersList(salesList);
         model.addAttribute("salesCustomersList",salesCustomersList);
         return "allSales";
+    }
+    @GetMapping("/Sales/discounted")
+    public String getDiscountedSalesList(Model model){
+        List<Sales> salesList = salesService.getAllDiscountedSales();
+        List<SalesCustomers> discountedSalesCustomersList = salesService.generateSalesCustomersList(salesList);
+        model.addAttribute("discountedSalesCustomersList",discountedSalesCustomersList);
+        return "allDiscountedSales";
+    }
+
+    @GetMapping("/Sales/discounted/{percent}")
+    public String getFixDiscountedSalesList(@PathVariable double percent, Model model){
+        double inputPercent = percent/100;
+        List<Sales> salesList = salesService.getAllFixedDiscountedSales(inputPercent);
+        List<SalesCustomers> discountedSalesCustomersList = salesService.generateSalesCustomersList(salesList);
+        model.addAttribute("discountedSalesCustomersList",discountedSalesCustomersList);
+        return "discountedSalesPercent";
     }
 
 }
