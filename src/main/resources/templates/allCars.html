@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head>
+    <meta charset="UTF-8">
+    <title>All Cars list</title>
+</head>
+<body>
+<h1>All Cars list</h1>
+<table border="1px">
+    <tr>
+        <th>Car Make</th>
+        <th>Car Model</th>
+        <th>Car Travelled Distance</th>
+    </tr>
+    <tbody>
+    <tr th:each="car:${allCarsList}">
+        <td th:text="${car.make}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.travelledDistance}"></td>
+    </tr>
+    <tbody>
+</table>
+</body>
+</html>

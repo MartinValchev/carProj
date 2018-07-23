@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Car pages home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+</style>
+</head>
+<body>
+<h2>Car pages home</h2>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#">Home</a></li>
+        <li class="dropdown-submenu active">
+
+            <a class="test" tabindex="-1" href="#">Customers <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                    <a class="test" tabindex="-1" href="#">All <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li> <a href="/customers/all/ascending">ascending</a></li>
+                        <li> <a href="/customers/all/descending">descending</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+      <li class="dropdown-submenu">
+
+            <a class="test" tabindex="-1" href="#">Cars <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                    <a href="/cars/all">All</a>
+                </li>
+
+            </ul>
+        </li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
+
+
+</body>
+</html>

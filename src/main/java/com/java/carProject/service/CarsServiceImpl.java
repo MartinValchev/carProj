@@ -23,4 +23,9 @@ public class CarsServiceImpl implements CarsService {
         Cars car  =carsRepository.getCarByid(carId);
         return car;
     }
+
+    @Override
+    public List<Cars> getAllCars() {
+        return carsRepository.getAllCars();
+    }
 }

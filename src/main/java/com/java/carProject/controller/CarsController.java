@@ -32,4 +32,10 @@ public class CarsController {
        model.addAttribute("carPartsList",carPartsList);
         return "parts";
     }
+    @GetMapping("/cars/all")
+    public String getAllCarts(Model model){
+        List<Cars> allCarsList = carsService.getAllCars();
+        model.addAttribute("allCarsList",allCarsList);
+        return "allCars";
+    }
 }
