@@ -8,5 +8,6 @@ import java.util.List;
 public interface CustomerService {
     List<Customers> getCustomersByBirthDateAsc();
     List<Customers> getCustomersByBirthDateDesc();
+    Customers getCustomerById(Long customerId);
 
 }

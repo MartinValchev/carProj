@@ -17,4 +17,5 @@ public interface CustomerRepository extends CrudRepository<Customers,Long> {
     @Query("SELECT e FROM Customers e WHERE e.id =:id")
     Customers getCustomerById(@Param("id") Long id);
 
+
 }

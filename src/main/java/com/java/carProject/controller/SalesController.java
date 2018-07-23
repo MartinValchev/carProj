@@ -16,7 +16,7 @@ public class SalesController {
     @Autowired
     SalesService salesService;
 
-    @GetMapping("/customers/{id}")
+    @GetMapping("/Sales/customer/{id}")
     public String getSalesByCustomerId(@PathVariable Long id, Model model){
         String customerName = salesService.getCustomerName(id);
         int boughtCarsCount = salesService.getBoughtCarsCount(id);

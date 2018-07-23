@@ -1,0 +1,22 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+
+    <title>Add Customer</title>
+</head>
+<body>
+<h2>Add Customer</h2>
+<form th:action="@{/customers}" th:object="${customers}" method="post">
+    Name:<br>
+    <input type="text" th:field="*{name}">
+    <br>
+   Birth Date:<br>
+    <input type="date" th:field=="*{birthDate}">
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
