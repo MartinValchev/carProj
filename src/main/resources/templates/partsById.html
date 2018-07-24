@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Part by ID</title>
+</head>
+<body>
+<h1>Parts Information by Id</h1>
+<div>
+    <p><b>Part Id:</b> <span th:text="${parts.id}"></span> </p>
+    <p><b>Part Name:</b> <span th:text="${parts.name}"></span> </p>
+    <p><b>Part price: </b><span th:text="${parts.price}"></span> </p>
+    <p><b>Part quantity:</b> <span th:text="${parts.name}"></span> </p>
+    <p><b>Supplier name :</b> <span th:text="${parts.suppliers.name}"></span> </p>
+</div>
+</body>
+</html>
