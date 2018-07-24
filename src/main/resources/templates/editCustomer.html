@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+    <title>Edit Customer</title>
+</head>
+<body>
+<h2>Edit Customer</h2>
+<form th:action="@{/editCustomer}" th:object="${customers}" method="post">
+    <input type="hidden" th:field="${customers.id}" />
+    Name:<br>
+    <input type="text" th:field="*{name}">
+    <br>
+    Birth Date:<br>
+    <input type="date" th:field=="*{birthDate}">
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

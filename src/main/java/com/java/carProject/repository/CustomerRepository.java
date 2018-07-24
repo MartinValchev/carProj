@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface CustomerRepository extends CrudRepository<Customers,Long> {
@@ -17,5 +18,7 @@ public interface CustomerRepository extends CrudRepository<Customers,Long> {
     @Query("SELECT e FROM Customers e WHERE e.id =:id")
     Customers getCustomerById(@Param("id") Long id);
 
+    @Query("Update Customers c SET c.name=:name, c.birthDate=:birthDate where c.id=:id")
+    void updateCustomer(@Param("name")String name, @Param("birthDate")Date birthDate, @Param("id") Long id);
 
 }

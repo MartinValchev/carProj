@@ -10,4 +10,6 @@ public interface CustomerService {
     List<Customers> getCustomersByBirthDateDesc();
     Customers getCustomerById(Long customerId);
 
+    void updateCustomer(Customers customer);
+
 }

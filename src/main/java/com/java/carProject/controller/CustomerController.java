@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.websocket.server.PathParam;
 import java.net.URI;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -82,5 +83,18 @@ public class CustomerController {
         return "customerById";
     }
 
+    @PostMapping("/editCustomer")
+    public RedirectView editCustomer(@RequestParam Long id, @ModelAttribute("customers")Customers customer){
+        int a=10;
+        customer.setId(id);
+        customerService.updateCustomer(customer);
+        return new RedirectView("/customers/" + customer.getId());
+    }
+    @GetMapping("/editCustomer/{id}")
+    public String editCustomerById(@PathVariable Long id, Model model){
+        Customers customers = customerService.getCustomerById(id);
+        model.addAttribute("customers", customers);
+        return "editCustomer";
+    }
 
 }

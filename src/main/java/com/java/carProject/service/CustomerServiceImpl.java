@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -32,6 +33,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customers getCustomerById(Long customerId) {
         return customerRepository.getCustomerById(customerId);
+    }
+
+    @Override
+    public void updateCustomer(Customers customer) {
+        customerRepository.save(customer);
     }
 
 
