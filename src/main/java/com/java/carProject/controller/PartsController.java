@@ -60,5 +60,11 @@ public class PartsController {
              model.addAttribute("parts",parts);
         return "partsById";
     }
+    @GetMapping("/deleteParts")
+    public String getDeletePart(Model model){
+        List<Parts> allParts =  partsService.getAllPartsList();
+        model.addAttribute("partsList",allParts);
+        return "deleteParts";
+    }
 
 }
