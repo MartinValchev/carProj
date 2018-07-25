@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name ="parts")
 public class Parts {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private double price;
@@ -67,10 +67,7 @@ public class Parts {
     }
 
     public void setSuppliers(Suppliers suppliers) {
-        this.suppliers = this.suppliers;
+        this.suppliers = suppliers;
     }
-
-
-
 
 }

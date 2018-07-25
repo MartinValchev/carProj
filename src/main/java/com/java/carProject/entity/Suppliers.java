@@ -16,6 +16,7 @@ public class Suppliers {
 
 
 
+
     public Long getId() {
         return id;
     }
@@ -47,5 +48,6 @@ public class Suppliers {
     public void setParts(Set<Parts> parts) {
         this.parts = parts;
     }
+
 
 }

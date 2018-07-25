@@ -2,17 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Get Part by ID</title>
 </head>
 <body>
 <h1>Parts Information by Id</h1>
-<div>
-    <p><b>Part Id:</b> <span th:text="${parts.id}"></span> </p>
-    <p><b>Part Name:</b> <span th:text="${parts.name}"></span> </p>
-    <p><b>Part price: </b><span th:text="${parts.price}"></span> </p>
-    <p><b>Part quantity:</b> <span th:text="${parts.name}"></span> </p>
-    <p><b>Supplier name :</b> <span th:text="${parts.suppliers.name}"></span> </p>
-</div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p> <label th:for="partId"> Part Id:</label> <span id="partId" th:text="${parts.id}"></span> </p>
+            <p> <label th:for="partName"> Part Name:</label> <span id="partName" th:text="${parts.name}"></span> </p>
+            <p> <label th:for="partPrice"> Part Price:</label><span id="partPrice" th:text="${parts.price}"></span> </p>
+            <p> <label th:for="partQuantity"> Part Quantity:</label> <span id="partQuantity" th:text="${parts.quantity}"></span> </p>
+            <p> <label th:for="supplierName"> Supplier name:</label> <span id="supplierName" th:text="${parts.suppliers.name}"></span> </p>
+        </div>
+    </div>
 </body>
 </html>

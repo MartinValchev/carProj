@@ -7,4 +7,5 @@ import java.util.List;
 public interface SuppliersService {
     List<Suppliers> getLocalSuppliers();
     List<Suppliers> getImporterSuppliers();
+    List<Suppliers> getAllSuppliers();
 }

@@ -23,4 +23,9 @@ public class SuppliersServiceImpl implements SuppliersService {
         List<Suppliers> importerSuppliersList = supplierRepository.findImporterSuppliers();
         return importerSuppliersList;
     }
+
+    @Override
+    public List<Suppliers> getAllSuppliers() {
+        return supplierRepository.getAllSuppliers();
+    }
 }

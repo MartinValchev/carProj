@@ -61,5 +61,4 @@ public class Cars {
         this.travelledDistance = travelledDistance;
     }
 
-
 }
