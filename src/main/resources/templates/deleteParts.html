@@ -17,6 +17,7 @@
         <th>Part price</th>
         <th>Quantity</th>
         <th>Supplier name</th>
+        <th>For Delete</th>
     </tr>
     <tbody>
     <tr th:each="part:${partsList}">
@@ -24,6 +25,7 @@
         <td th:text="${part.price}"></td>
         <td th:text="${part.quantity}"></td>
         <td th:text="${part.suppliers.name}"></td>
+        <td><input type="checkbox" name="isDelete" value="${part.id}"></td>
     </tr>
     <tbody>
 </table>
