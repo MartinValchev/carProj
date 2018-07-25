@@ -54,15 +54,16 @@ public class CarsController {
         return "allCars";
     }
 
-    @GetMapping("/AddCars")
+    @GetMapping("/addCars")
     public String getAddCars(Model model){
         model.addAttribute("cars", new Cars());
         return "AddCars";
     }
-  /*  @PostMapping("/AddCars")
+    @PostMapping("/addCars")
     public RedirectView addCars(@ModelAttribute("cars") Cars cars){
         Cars savedCars = carsRepository.save(cars);
-    }*/
+        return new RedirectView("/cars/id/" + savedCars.getId() );
+    }
 
 
 

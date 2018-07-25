@@ -8,8 +8,8 @@ import java.util.List;
 @Table(name = "cars")
 public class Cars {
 
-    @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String make;
     private String model;
@@ -29,7 +29,7 @@ public class Cars {
         this.parts = parts;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
