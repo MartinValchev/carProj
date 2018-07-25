@@ -67,8 +67,10 @@ public class PartsController {
         return "deleteParts";
     }
     @PostMapping("/deleteParts")
-    public void deleteParts(@RequestParam("partIds")  List<String>  partIds){
-        int a =0;
+    public RedirectView deleteParts(@RequestParam("partIds")  List<String>  partIds){
+        partsService.deleteParts(partIds);
+
+        return new RedirectView("/deleteParts");
     }
 
 }

@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +28,16 @@ public class PartsServiceImpl implements PartsService {
 
     @Override
     public void deleteParts(List<String> partIds) {
-       List<Long> longIds = (partIds.stream().mapToLong(Long::parseLong)).boxed().collect(Collectors.toList());
-        partsRepository.deleteParts(longIds);
+    Pattern pattern  = Pattern.compile("\\d+");
+
+       for(String partId:partIds){
+           Matcher matcher = pattern.matcher(partId);
+           if(matcher.find()){
+               String partIdStr = matcher.toMatchResult().group();
+               Long currentId = Long.parseLong(partIdStr);
+               partsRepository.deleteById(currentId);
+           }
+
+       }
     }
 }
