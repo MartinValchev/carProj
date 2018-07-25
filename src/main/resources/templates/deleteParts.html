@@ -11,23 +11,27 @@
 </head>
 <body>
 <h2>All Parts List</h2>
-<table class="table table-striped" border="1px">
-    <tr>
-        <th>Part name</th>
-        <th>Part price</th>
-        <th>Quantity</th>
-        <th>Supplier name</th>
-        <th>For Delete</th>
-    </tr>
-    <tbody>
-    <tr th:each="part:${partsList}">
-        <td th:text="${part.name}"></td>
-        <td th:text="${part.price}"></td>
-        <td th:text="${part.quantity}"></td>
-        <td th:text="${part.suppliers.name}"></td>
-        <td><input type="checkbox" name="isDelete" value="${part.id}"></td>
-    </tr>
-    <tbody>
-</table>
+<div class="form-group">
+    <form th:action="@{/deleteParts}" th:object="${partIds}" method="post">
+        <table class="table table-striped" border="1px">
+            <tr>
+                <th>Part name</th>
+                <th>Part price</th>
+                <th>Quantity</th>
+                <th>Supplier name</th>
+                <th>For Delete</th>
+            </tr>
+            <tbody>
+            <tr th:each="part:${partsList}">
+                <td th:text="${part.name}"></td>
+                <td th:text="${part.price}"></td>
+                <td th:text="${part.quantity}"></td>
+                <td th:text="${part.suppliers.name}"></td>
+                <td><input type="checkbox" id="partIds" name="partIds" th:value=="${part.id}"></td>
+            </tr>
+            <tbody>
+        </table>
+        <input type="submit" class="btn btn-default" value="Delete">
+    </form>>
 </body>
 </html>

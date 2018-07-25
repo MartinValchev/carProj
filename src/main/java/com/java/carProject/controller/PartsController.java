@@ -10,13 +10,11 @@ import com.java.carProject.service.SuppliersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.websocket.server.PathParam;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -63,8 +61,14 @@ public class PartsController {
     @GetMapping("/deleteParts")
     public String getDeletePart(Model model){
         List<Parts> allParts =  partsService.getAllPartsList();
+        List<String> strArr = new ArrayList<>();
+        model.addAttribute("partIds", strArr);
         model.addAttribute("partsList",allParts);
         return "deleteParts";
+    }
+    @PostMapping("/deleteParts")
+    public void deleteParts(@RequestParam("partIds")  List<String>  partIds){
+        int a =0;
     }
 
 }
