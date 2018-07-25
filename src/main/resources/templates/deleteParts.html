@@ -7,12 +7,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>function confirmDelete(){
+        var retVal = confirm("Do you want to delete selected items ?");
+               if( retVal == true ){
+                  $('form#deleteForm').submit();
+               }
+    }
+</script>
     <title>All Parts List</title>
 </head>
 <body>
 <h2>All Parts List</h2>
 <div class="form-group">
-    <form th:action="@{/deleteParts}" th:object="${partIds}" method="post">
+    <form id="deleteForm" th:action="@{/deleteParts}" th:object="${partIds}" method="post">
         <table class="table table-striped" border="1px">
             <tr>
                 <th>Part name</th>
@@ -31,7 +38,7 @@
             </tr>
             <tbody>
         </table>
-        <input type="submit" class="btn btn-default" value="Delete">
+        <input type="button" onclick="confirmDelete()" class="btn btn-default" value="Delete">
     </form>>
 </body>
 </html>
