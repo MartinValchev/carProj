@@ -72,5 +72,16 @@ public class PartsController {
 
         return new RedirectView("/deleteParts");
     }
+    @GetMapping("/editParts/{id}")
+    public String getEditPart(@PathVariable("id")Long id, Model model){
+        Parts parts =  partsRepository.getPartsById(id);
+        model.addAttribute("parts",parts);
+        return "editParts";
+    }
+    @PostMapping("/editParts")
+    public RedirectView editParts(@ModelAttribute("parts") Parts parts){
+        partsRepository.save(parts);
+        return new RedirectView("/parts/" +parts.getId() );
+    }
 
 }

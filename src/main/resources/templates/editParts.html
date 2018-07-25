@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>Edit Part</title>
+    </head>
+    <body>
+        <h2>Edit Part</h2>
+        <div class="form-group">
+            <form th:action="@{/editParts}" th:object="${parts}" method="post">
+                <label th:for="id"> Name:</label>
+                <input class="form-control" type="hidden" th:field="*{id}" readonly>
+                <br>
+                <label th:for="name"> Name:</label>
+                <input class="form-control" type="text" th:field="*{name}" readonly>
+                <br>
+                <label th:for="price"> Price:</label>
+                <input class="form-control" type="text" th:field="*{price}" >
+                <br>
+                <label th:for="quantity"> Quantity:</label>
+                <input class="form-control" type="text" th:field="*{quantity}">
+                <br><br>
+                <label th:for="suppliers"> Supplier:</label>
+                <input class="form-control" type="text" th:value="${parts.suppliers.id}" th:text="${parts.suppliers.name}" name="suppliers" readonly>
+                <br><br>
+                <input type="submit" class="btn btn-default" value="Submit">
+
+            </form>
+            </div>
+    </body>
+</html>

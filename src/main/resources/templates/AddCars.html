@@ -1,0 +1,30 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Add Cars</title>
+</head>
+<body>
+<h2>Add Part</h2>
+<div class="form-group">
+    <form th:action="@{/addCars}" th:object="${cars}" method="post">
+        <label th:for="make"> Make:</label>
+        <input class="form-control" type="text" th:field="*{make}">
+        <br>
+        <label th:for="model"> Model:</label>
+        <input class="form-control" type="text" th:field="*{model}">
+        <br>
+        <label th:for="travelledDistance"> Travelled Distance:</label>
+        <input class="form-control" type="text" th:field="*{travelledDistance}">
+        <br><br>
+        <input type="submit" class="btn btn-default" value="Submit">
+
+    </form>
+</div>
+</body>
+</html>
