@@ -14,4 +14,7 @@ public interface PartsRepository extends CrudRepository<Parts,Long> {
 
     @Query("SELECT e from Parts e")
     List<Parts> getAllPartsList();
+
+    @Query("DELETE e FROM Parts e where e.id IN :partIds")
+    void deleteParts(@Param("partIds") List<Long> partIds);
 }

@@ -8,4 +8,6 @@ public interface PartsService {
     Parts getPartsById(Long id);
 
     List<Parts> getAllPartsList();
+
+    void deleteParts(List<String> partIds);
 }
