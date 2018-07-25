@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,4 +40,11 @@ public class CarsController {
         model.addAttribute("allCarsList",allCarsList);
         return "allCars";
     }
+
+    @GetMapping("/AddCars")
+    public String getAddCars(Model model){
+        model.addAttribute("cars", new Cars());
+        return "AddCars";
+    }
+
 }
