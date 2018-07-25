@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head>
+    <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Get Part by ID</title>
+</head>
+<body>
+<h1>Cars Information by Id</h1>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <p> <label th:for="carId"> Part Id:</label> <span id="carId" th:text="${cars.id}"></span> </p>
+        <p> <label th:for="carMake"> Part Name:</label> <span id="carMake" th:text="${cars.make}"></span> </p>
+        <p> <label th:for="carsModel"> Part Price:</label><span id="carsModel" th:text="${cars.model}"></span> </p>
+        <p> <label th:for="travelledDistance"> Part Quantity:</label> <span id="travelledDistance" th:text="${cars.travelledDistance}"></span> </p>
+    </div>
+</div>
+</body>
+</html>
