@@ -72,6 +72,7 @@ public class CarsController {
         cars.setParts(parts);
         Cars savedCars = carsRepository.save(cars);
         return new RedirectView("/cars/id/" + savedCars.getId() );
+        
     }
 
 
