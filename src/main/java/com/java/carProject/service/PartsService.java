@@ -10,4 +10,6 @@ public interface PartsService {
     List<Parts> getAllPartsList();
 
     void deleteParts(List<String> partIds);
+
+    List<Parts> generateParts(String partIds);
 }

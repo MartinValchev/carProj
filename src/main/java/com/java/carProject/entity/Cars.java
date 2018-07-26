@@ -15,6 +15,9 @@ public class Cars {
     private String model;
     private long travelledDistance;
 
+    @Transient
+    private String partIds;
+
     @ManyToMany
     @JoinTable(name="parts_cars",
             joinColumns = {@JoinColumn(name="car_id")},
@@ -61,4 +64,11 @@ public class Cars {
         this.travelledDistance = travelledDistance;
     }
 
+    public String getPartIds() {
+        return partIds;
+    }
+
+    public void setPartIds(String partIds) {
+        this.partIds = partIds;
+    }
 }
