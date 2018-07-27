@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+            <form th:fragment="addCarsForm" th:object="${cars}" method="post">
+                <div>
+                    <label th:for="make"> Make:</label>
+                    <input class="form-control" type="text" th:field="*{make}" placeholder="Car Make">
+                    <div class="form-control-feedback" th:each="error : ${#fields.errors('make')}" th:text="${error}">Error in make</div>
+                </div>
+                <div>
+                    <label th:for="model"> Model:</label>
+                    <input class="form-control" type="text" th:field="*{model}" placeholder="Car Model">
+                    <div class="form-control-feedback" th:each="error: ${#fields.errors('model')}" th:text="${model}">Error in model</div>
+                </div>
+                <div>
+                    <label th:for="travelledDistance"> Travelled Distance:</label>
+                    <input class="form-control" type="text" th:field="*{travelledDistance}" placeholder="Travelled Distance">
+                    <div class="form-control-feedback" th:each="error : ${#fields.errors('travelledDistance')}" th:text="${error}">Error in Travelled Distance</div>
+                </div>
+                <div>
+                    <label th:for="partIds"> Part Ids:</label>
+                    <input class="form-control" type="text" th:field="*{partIds}" placeholder="1 2 5">
+                    <div class="form-control-feedback" th:each="error : ${#fields.errors('partIds')}" th:text="${errors}">Error in part Ids</div>
+                </div>
+                <input type="submit" class="btn btn-default" value="Submit">
+            </form>
+</body>
+</html>
