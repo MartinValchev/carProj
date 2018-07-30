@@ -4,26 +4,51 @@
     <meta charset="UTF-8">
 </head>
 <body>
-            <form th:fragment="addCarsForm" th:object="${cars}" method="post">
-                <div>
-                    <label th:for="make"> Make:</label>
-                    <input class="form-control" type="text" th:field="*{make}" placeholder="Car Make">
-                    <div class="form-control-feedback" th:each="error : ${#fields.errors('make')}" th:text="${error}">Error in make</div>
+            <form th:object="${carsBindingModel}" th:fragment="addCarsForm" method="post">
+                <div class="form-group row" th:classappend="${#fields.hasErrors('make')} ? 'has-danger'">
+                    <label for="inputMake" class="col-sm-2 col-form-label">Make</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-danger" id="inputMake"
+                               placeholder="Honda" th:field="*{make}"/>
+                        <div class="form-control-feedback" th:each="error : ${#fields.errors('make')}" th:text="${error}">Sorry, that name is invalid</div>
+                    </div>
                 </div>
-                <div>
-                    <label th:for="model"> Model:</label>
-                    <input class="form-control" type="text" th:field="*{model}" placeholder="Car Model">
-                    <div class="form-control-feedback" th:each="error: ${#fields.errors('model')}" th:text="${model}">Error in model</div>
+                <div class="form-group row" th:classappend="${#fields.hasErrors('model')} ? 'has-danger'">
+                    <label for="inputModel" class="col-sm-2 col-form-label">Model</label>
+                    <div class="col-sm-10">
+                        <input type="text" step="0.01" min="0" class="form-control form-control-danger" id="inputModel"
+                               placeholder="eg 15.20" th:field="*{model}"/>
+                        <div class="form-control-feedback" th:each="error : ${#fields.errors('model')}" th:text=" ${error}">Sorry, that price is invalid</div>
+                    </div>
                 </div>
-                <div>
-                    <label th:for="travelledDistance"> Travelled Distance:</label>
-                    <input class="form-control" type="text" th:field="*{travelledDistance}" placeholder="Travelled Distance">
-                    <div class="form-control-feedback" th:each="error : ${#fields.errors('travelledDistance')}" th:text="${error}">Error in Travelled Distance</div>
+                <div class="form-group row" th:classappend="${#fields.hasErrors('travelledDistance')} ? 'has-danger'">
+                    <label for="travelledDistance" class="col-sm-2 col-form-label">Travelled Distance</label>
+                    <div class="col-sm-10">
+                        <input type="text" min="0" class="form-control form-control-danger" id="travelledDistance"
+                               placeholder="eg 150000" th:field="*{travelledDistance}"/>
+                        <div class="form-control-feedback" th:each="error : ${#fields.errors('travelledDistance')}" th:text=" ${error}">Sorry, that price is invalid</div>
+                    </div>
                 </div>
-                <div>
+                <div class="form-group row" th:classappend="${#fields.hasErrors('partIds')} ? 'has-danger'">
                     <label th:for="partIds"> Part Ids:</label>
-                    <input class="form-control" type="text" th:field="*{partIds}" placeholder="1 2 5">
-                    <div class="form-control-feedback" th:each="error : ${#fields.errors('partIds')}" th:text="${errors}">Error in part Ids</div>
+                    <div class="col-sm-10">
+                        <input id="partIds" class="form-control" type="text" th:field="*{partIds}" placeholder="1 2 5">
+                        <div class="form-control-feedback" th:each="error : ${#fields.errors('partIds')}" th:text=" ${error}">Sorry, that price is invalid</div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-default" value="Submit">
+            </form>
+
+            <form th:object="${customers}" method="post" th:fragment="addCustomer">
+                <div class="form-group row">
+                    <label for="customerName" class="col-sm-2 col-form-label">Name:</label>
+                    <input id="customerName" type="text" th:field="*{name}">
+                    <div class="form-control-feedback" th:each="error : ${#fields.errors('name'}" th:text="${error}">Error in name</div>
+                </div>
+                <div class="form-group row">
+                    <label for="birthDate" class="col-sm-2 col-form-label"> Birth Date:</label>
+                    <input id ="birthDate" type="date" th:field=="*{birthDate}">
+                    <div class="form-control-feedback" th:each="error : ${#fields.errors('birthDate'}" th:text="${error}">Error in birth date</div>
                 </div>
                 <input type="submit" class="btn btn-default" value="Submit">
             </form>
