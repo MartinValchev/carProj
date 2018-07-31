@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,15 +9,29 @@
     <title>Get Part by ID</title>
 </head>
 <body>
-<h1>Parts Information by Id</h1>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <p> <label th:for="partId"> Part Id:</label> <span id="partId" th:text="${parts.id}"></span> </p>
-            <p> <label th:for="partName"> Part Name:</label> <span id="partName" th:text="${parts.name}"></span> </p>
-            <p> <label th:for="partPrice"> Part Price:</label><span id="partPrice" th:text="${parts.price}"></span> </p>
-            <p> <label th:for="partQuantity"> Part Quantity:</label> <span id="partQuantity" th:text="${parts.quantity}"></span> </p>
-            <p> <label th:for="supplierName"> Supplier name:</label> <span id="supplierName" th:text="${parts.suppliers.name}"></span> </p>
-        </div>
+<div class="container">
+    <div class="jumbotron">
+        <h2>Parts Information by Id</h2>
     </div>
+    <div class="panel panel-default">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <label for="partId" class="col-sm-2 col-form-label"><b>Part ID: </b> </label><span id ="partId" th:text="${parts.id}"></span>
+            </li>
+            <li class="list-group-item">
+                <label for="partName" class="col-sm-2 col-form-label"><b>Part Name: </b> </label><span id ="partName" th:text="${parts.name}"></span>
+            </li>
+            <li class="list-group-item">
+                <label for="partPrice" class="col-sm-2 col-form-label"><b>Part Price: </b> </label><span id ="partPrice" th:text="${parts.price}"></span>
+            </li>
+            <li class="list-group-item">
+                <label for="partQuantity" class="col-sm-2 col-form-label"><b>Part Quantity: </b> </label><span id ="partQuantity" th:text="${parts.quantity}"></span>
+            </li>
+            <li class="list-group-item">
+                <label for="supplierName" class="col-sm-2 col-form-label"><b>Supplier name: </b> </label><span id ="supplierName" th:text="${parts.suppliers.name}"></span>
+            </li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>
