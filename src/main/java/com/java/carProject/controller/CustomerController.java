@@ -96,6 +96,7 @@ public class CustomerController {
 
     @GetMapping("/customers")
     public String addCustomer(CustomerBindingModel customerBindingModel){
+
         return "AddCustomer";
     }
     @GetMapping("/customers/{id}")

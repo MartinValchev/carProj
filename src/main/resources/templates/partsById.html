@@ -3,9 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
     <title>Get Part by ID</title>
 </head>
 <body>
@@ -28,10 +26,14 @@
                 <label for="partQuantity" class="col-sm-2 col-form-label"><b>Part Quantity: </b> </label><span id ="partQuantity" th:text="${parts.quantity}"></span>
             </li>
             <li class="list-group-item">
-                <label for="supplierName" class="col-sm-2 col-form-label"><b>Supplier name: </b> </label><span id ="supplierName" th:text="${parts.suppliers.name}"></span>
+                <label for="supplName" class="col-sm-2 col-form-label"><b>Supplier name: </b> </label><span id ="supplName" th:text="${parts.suppliers.name}"></span>
             </li>
         </ul>
+
     </div>
 </div>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/tether.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

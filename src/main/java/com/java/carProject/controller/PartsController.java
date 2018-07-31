@@ -68,6 +68,7 @@ public class PartsController {
              model.addAttribute("parts",parts);
         return "partsById";
     }
+
     @GetMapping("/deleteParts")
     public String getDeletePart(Model model){
         List<Parts> allParts =  partsService.getAllPartsList();
@@ -83,15 +84,23 @@ public class PartsController {
         return new RedirectView("/deleteParts");
     }
     @GetMapping("/editParts/{id}")
-    public String getEditPart(@PathVariable("id")Long id, Model model){
+    public String getEditPart(@PathVariable("id")Long id,PartsBindingModel partsBindingModel, Model model){
         Parts parts =  partsRepository.getPartsById(id);
-        model.addAttribute("parts",parts);
+        ModelMapper modelMapper = new ModelMapper();
+        partsBindingModel = modelMapper.map(parts,PartsBindingModel.class);
+        model.addAttribute("partsBindingModel",partsBindingModel);
         return "editParts";
     }
-    @PostMapping("/editParts")
-    public RedirectView editParts(@ModelAttribute("parts") Parts parts){
-        partsRepository.save(parts);
-        return new RedirectView("/parts/" +parts.getId() );
+    @PutMapping("/editParts")
+    public String editParts(@ModelAttribute PartsBindingModel partBindingModel, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "editParts";
+        }else {
+            ModelMapper modelMapper = new ModelMapper();
+            Parts parts = modelMapper.map(partBindingModel,Parts.class);
+            partsRepository.save(parts);
+            return "redirect:/parts/" + parts.getId();
+        }
     }
 
 }

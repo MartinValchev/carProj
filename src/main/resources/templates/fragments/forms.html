@@ -100,6 +100,28 @@
             <input type="submit" class="btn btn-default" value="Submit">
 
         </form>
-
+        <!--Edit Parts form -->
+        <form th:action="@{/editParts}" th:object="${partsBindingModel}" th:method="put" th:fragment="editPartsForm">
+                <input class="form-control form-control-danger" type="hidden" th:field="*{id}" readonly>
+            <div class="form-group row">
+                <label th:for="name"> Name:</label>
+                <input class="form-control" type="text" th:field="*{name}" readonly>
+            </div>
+            <div class="form-group row" th:classappend="${#fields.hasErrors('price')} ? 'has-danger'">
+                <label th:for="price"> Price:</label>
+                <input class="form-control form-control-danger" type="text" th:field="*{price}">
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('price')}" th:text="${error}"></div>
+            </div>
+            <div class="form-group row" th:classappend="${#fields.hasErrors('quantity')} ? 'has-danger'">
+                <label th:for="quantity"> Quantity:</label>
+                <input class="form-control form-control-danger" type="text" th:field="*{quantity}">
+                <div class="form-control-feedback" th:each="error : ${#fields.errors('quantity')}" th:text="${error}"></div>
+            </div>
+            <div class="form-group row">
+                <label th:for="suppliers"> Supplier: </label>
+                <div  class="form-control" id="suppliers" th:text="${partsBindingModel.suppliers.name}"/>
+            </div>
+            <input type="submit" class="btn btn-default" value="Submit">
+        </form>
 </body>
 </html>
