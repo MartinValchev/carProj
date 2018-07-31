@@ -105,17 +105,26 @@ public class CustomerController {
         return "customerById";
     }
 
-    @PostMapping("/editCustomer")
-    public RedirectView editCustomer(@RequestParam Long id, @ModelAttribute("customers")Customers customer){
-        int a=10;
-        customer.setId(id);
-        customerService.updateCustomer(customer);
-        return new RedirectView("/customers/" + customer.getId());
+    @PutMapping("/editCustomer")
+    public String editCustomer( @Valid @ModelAttribute CustomerBindingModel customerBindingModel,BindingResult bindingResult){
+        Long id =  customerBindingModel.getId();
+        if(bindingResult.hasErrors()){
+            return "editCustomer";
+        }else{
+            ModelMapper modelMapper= new ModelMapper();
+            Customers customer = modelMapper.map(customerBindingModel,Customers.class);
+            customer.setId(id);
+            customerService.updateCustomer(customer);
+            return "redirect:customers/" + customer.getId();
+        }
+
     }
     @GetMapping("/editCustomer/{id}")
-    public String editCustomerById(@PathVariable Long id, Model model){
+    public String editCustomerById(@PathVariable Long id, CustomerBindingModel customerBindingModel, Model model){
         Customers customers = customerService.getCustomerById(id);
-        model.addAttribute("customers", customers);
+        ModelMapper modelMapper = new ModelMapper();
+        customerBindingModel = modelMapper.map(customers,CustomerBindingModel.class);
+        model.addAttribute("customerBindingModel",customerBindingModel);
         return "editCustomer";
     }
 

@@ -2,25 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+    <title>Customer by ID</title>
 </head>
-<body>
-<h1>Customer by ID</h1>
-<table border="1px">
-    <tr>
-        <th>Customer Id</th>
-        <th>Name</th>
-        <th>Birth date</th>
-    </tr>
-    <tbody>
-    <tr th:each="customer:${customers}">
-        <td th:text="${customer.id}"></td>
-        <td th:text="${customer.name}"></td>
-        <td th:text="${customer.birthDate}"></td>
-    </tr>
-    <tbody>
-</table>
-</body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Customer by ID</h2>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <label for="customerId" class="col-sm-2 col-form-label"><b>Customer ID:</b> </label><span id ="customerId" th:text="${customers.id}"></span>
+            </li>
+            <li class="list-group-item">
+                <label for="customerName" class="col-sm-2 col-form-label"><b>Customer Name:</b> </label> <span id="customerName" th:text="${customers.name}"></span>
+            </li>
+            <li class="list-group-item">
+                <label for="customerBirthDate" class="col-sm-2 col-form-label"><b>Customer Birth Date:</b> </label><span id="customerBirthDate" th:text="${#dates.format(customers.birthDate,'dd-MMM-yyyy')}"></span>
+            </li>
+        </ul>
+    </div>
+        <script th:src="@{/jquery/jquery.min.js}"></script>
+        <script th:src="@{/bootstrap/js/tether.min.js}"></script>
+        <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    </body>
 </html>
 </html>
