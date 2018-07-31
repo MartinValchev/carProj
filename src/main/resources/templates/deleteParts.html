@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+    <title>Delete Parts List</title>
+</head>
+<body>
+    <h2>Delete Parts List</h2>
+    <div class="form-group">
+        <form id="deleteForm" th:action="@{/deleteParts}" th:object="${partIds}" method="post">
+            <table class="table table-striped" border="1px">
+                <tr>
+                    <th>Part name</th>
+                    <th>Part price</th>
+                    <th>Quantity</th>
+            <!--        <th>Supplier name</th>-->
+                    <th>For Delete</th>
+                </tr>
+                <tbody>
+                <tr th:each="part : ${partsList}" th:object="${part}">
+                    <td th:field="*{name}" th:text="${part.name}"></td>
+                    <td th:field="*{price}" th:text="${part.price}"></td>
+                    <td th:field="*{quantity}" th:text="${part.quantity}"></td>
+ <!--                   <td th:field ="*{suppliers}" th:text="${part.suppliers.name}"></td>-->
+                    <td><input type="checkbox" id="partIds" name="partIds" th:value=="${part.id}"></td>
+                </tr>
+                <tbody>
+            </table>
+            <input type="button" onclick="confirmDelete()" class="btn btn-default" value="Delete">
+        </form>
+    </div>
+    <script th:src="@{/jquery/jquery.min.js}"></script>
+    <script th:src="@{/bootstrap/js/tether.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
     <script>function confirmDelete(){
         var retVal = confirm("Do you want to delete selected items ?");
                if( retVal == true ){
@@ -14,31 +41,5 @@
                }
     }
 </script>
-    <title>All Parts List</title>
-</head>
-<body>
-<h2>All Parts List</h2>
-<div class="form-group">
-    <form id="deleteForm" th:action="@{/deleteParts}" th:object="${partIds}" method="post">
-        <table class="table table-striped" border="1px">
-            <tr>
-                <th>Part name</th>
-                <th>Part price</th>
-                <th>Quantity</th>
-                <th>Supplier name</th>
-                <th>For Delete</th>
-            </tr>
-            <tbody>
-            <tr th:each="part:${partsList}">
-                <td th:text="${part.name}"></td>
-                <td th:text="${part.price}"></td>
-                <td th:text="${part.quantity}"></td>
-                <td th:text="${part.suppliers.name}"></td>
-                <td><input type="checkbox" id="partIds" name="partIds" th:value=="${part.id}"></td>
-            </tr>
-            <tbody>
-        </table>
-        <input type="button" onclick="confirmDelete()" class="btn btn-default" value="Delete">
-    </form>>
 </body>
 </html>

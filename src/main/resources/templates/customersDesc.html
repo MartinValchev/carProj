@@ -2,24 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
     <title>Customers By Birth Date Desc</title>
 </head>
 <body>
-<h1>Customers By Birth Date Desc</h1>
-<table border="1px">
-    <!--          <th>
-              <td>Name</td>
-              <td>Birth date</td>
-              <td>Is Young Driver</td>
-              </th>-->
-    <tbody>
-    <tr th:each="customer:${customersListDesc}">
-        <td th:text="${customer.name}"></td>
-        <td th:text="${customer.birthDate}"></td>
-        <td th:text="${customer.isYoungDriver}"></td>
-    </tr>
-    <tbody>
-</table>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Customers By Birth Date Desc</h1>
+    </div>
+    <table class="table table-striped" border="1px">
+        <tr>
+            <th>Customer name</th>
+            <th>Customer birthDate</th>
+            <th>isYoungDriver</th>
+        </tr>
+        <tbody>
+        <tr th:each="customer:${customersListDesc}">
+            <td th:text="${customer.name}"></td>
+            <td th:text="${#dates.format(customer.birthDate,'dd-MMM-yyyy')}"></td>
+            <td th:text="${customer.isYoungDriver}"></td>
+        </tr>
+        <tbody>
+    </table>
+</div>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/tether.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

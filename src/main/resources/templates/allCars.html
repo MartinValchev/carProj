@@ -2,24 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
 <head>
-    <meta charset="UTF-8">
-    <title>All Cars list</title>
+    <meta http-equiv="Content-Type" content="application/json; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+    <title>All Cars List</title>
 </head>
 <body>
-<h1>All Cars list</h1>
-<table border="1px">
-    <tr>
-        <th>Car Make</th>
-        <th>Car Model</th>
-        <th>Car Travelled Distance</th>
-    </tr>
-    <tbody>
-    <tr th:each="car:${allCarsList}">
-        <td th:text="${car.make}"></td>
-        <td th:text="${car.model}"></td>
-        <td th:text="${car.travelledDistance}"></td>
-    </tr>
-    <tbody>
-</table>
+<div class="container">
+    <div class="jumbotron">
+        <h2>All Cars List</h2>
+    </div>
+    <table class="table table-striped" border="1px">
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Travelled distance</th>
+        </tr>
+        <tbody>
+        <tr th:each="car:${allCarsList}">
+            <td th:text="${car.make}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.travelledDistance}"></td>
+        </tr>
+        <tbody>
+    </table>
+</div>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/tether.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
